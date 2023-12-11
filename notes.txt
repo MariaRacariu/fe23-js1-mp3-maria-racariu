@@ -1,0 +1,2 @@
+first we need to connect to the api and also make it so that if the api is not reachable then display a
+message for the user.

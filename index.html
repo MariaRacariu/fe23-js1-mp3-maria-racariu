@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rest Countries</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link rel="stylesheet" href="style/style.css" />
+    <script src="javascript/main.js" defer></script>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="search">Search:</label>
+        <input type="search" name="search" id="searchInput" />
+      </div>
+      <div>
+        <input type="radio" name="name" id="countryNameChoise" />
+        <label for="name">Name</label>
+        <input type="radio" name="language" id="languageChoise" />
+        <label for="language">Language</label>
+      </div>
+      <div>
+        <button>Get countries</button>
+      </div>
+    </form>
+
+    <div id="countriesContainer">
+      <!-- Structure of countries being displayed -->
+      <div class="3countryRow">
+        <!-- Structure of each country that will be displayed -->
+        <div class="country">
+          <img src="" alt="" class="countryImage" />
+          <h1 class="countryName"></h1>
+          <p class="subregion"></p>
+          <p class="capitalCity"></p>
+          <p class="population"></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
