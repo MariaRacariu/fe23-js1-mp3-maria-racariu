@@ -25,50 +25,46 @@ async function getAllCountriesList(path) {
 // Get the form Element
 const countriesForm = document.querySelector('form');
 
-const searchInput = document.querySelector('#searchInput').value;
-const countryNameChoice = document.querySelector('#countryNameChoice').value;
-const languageChoice = document.querySelector('#languageChoice').value;
+
+
 
 function handleInput(choice) {
-    console.log(choice);
-    if (choice.value === countryNameChoice) {
-        console.log('country name');
-        test(countryNameChoice);
-    } else if (choice.value === languageChoice) {
-        console.log('language');
-        test(languageChoice);
+    // console.log(choice);
+    if (choice.value === 'name') {
+        // console.log('country name');
+        // Add event listener to form
+        countriesForm.addEventListener('submit', event => {
+            event.preventDefault();
+            const searchInput = document.querySelector('#searchInput').value;
+            findInfo(searchInput);
+        })
+    } else if (choice.value === 'language') {
+        // console.log('language');
+        // Add event listener to form
+        countriesForm.addEventListener('submit', event => {
+            event.preventDefault();
+            console.log('nothing yet');
+        })
     } else {
         console.log('nothing');
     }
 }
-
-
-
-// Add event listener to form
-countriesForm.addEventListener('submit', event => {
-    event.preventDefault();
-    function test(choice) {
-        if (choice === countryNameChoice) {
-            findInfo(searchInput);
-        } else if (choice === languageChoice) {
-
-        } else {
-            displayErrorMessage();
-        }
-    }
-    test();
-})
+const countryNameElement = document.createElement('h1');
+document.body.append(countryNameElement);
 
 // Sends new request for new async promise
 function findInfo(countryName) {
+    // Get Flag
+    // getAllCountriesList(`name/${countryName}?field=flags.png`);
+    // Get Name
     getAllCountriesList(`name/${countryName}?fields=name`);
+
 }
+
+
 
 // Creates h1 and shows the country name
 function showName(countryName) {
-
-    const countryNameElement = document.createElement('h1');
-    document.body.append(countryNameElement);
     countryNameElement.innerText = countryName;
 }
 
