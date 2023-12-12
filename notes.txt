@@ -1,2 +1,20 @@
 first we need to connect to the api and also make it so that if the api is not reachable then display a
 message for the user.
+
+first you go to first array then thru the objects
+const commonName = data[0].name.common;
+
+console.log(data);
+console.log(data[0].name.common);
+const commonName = data[0].name.common;
+
+function findInfo(countryName) {
+    getAllCountriesList(`name/${countryName}?fields=name`);
+}
+
+function showName(countryName) {
+
+    const countryNameElement = document.createElement('h1');
+    document.body.append(countryNameElement);
+    countryNameElement.innerText = countryName;
+}
