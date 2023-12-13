@@ -15,28 +15,26 @@
         <input type="search" name="search" id="searchInput" />
       </div>
       <div>
-        <input type="radio" name="choice" id="countryNameChoice" value="name" onclick="handleInput(this)"/>
+        <input
+          type="radio"
+          name="choice"
+          id="countryNameChoice"
+          value="name"
+          onclick="handleInput(this)"
+        />
         <label for="choice">Name</label>
-        <input type="radio" name="choice" id="languageChoice" value="language" onclick="handleInput(this)"/>
+        <input
+          type="radio"
+          name="choice"
+          id="languageChoice"
+          value="language"
+          onclick="handleInput(this)"
+        />
         <label for="choice">Language</label>
       </div>
       <div>
         <button>Get countries</button>
       </div>
     </form>
-
-    <div id="countriesContainer">
-      <!-- Structure of countries being displayed -->
-      <div class="3countryRow">
-        <!-- Structure of each country that will be displayed -->
-        <div class="country">
-          <img src="" alt="" class="countryImage" />
-          <h1 class="countryName"></h1>
-          <p class="subregion"></p>
-          <p class="capitalCity"></p>
-          <p class="population"></p>
-        </div>
-      </div>
-    </div>
   </body>
 </html>

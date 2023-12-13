@@ -1,6 +1,10 @@
-// Create a promise
-async function getAllCountriesList(path) {
-    const url = `https://restcountries.com/v3.1/${path}`;
+// Get all elements
+const countriesForm = document.querySelector('form');
+const searchInput = document.querySelector('#searchInput').value;
+
+// Check connection and create promise
+async function getAllCountriesList(searchInput) {
+    const url = `https://restcountries.com/v3.1/name/${searchInput}`;
 
     try {
         const response = await fetch(url);
@@ -8,8 +12,7 @@ async function getAllCountriesList(path) {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
-            showName(data[0].name.common);
+            displayCountries(data);
         } else if (response.status === 404) {
             throw 404;
         } else {
@@ -20,26 +23,16 @@ async function getAllCountriesList(path) {
         displayErrorMessage(error);
     }
 }
-// getAllCountriesList("all");
-
-// Get the form Element
-const countriesForm = document.querySelector('form');
-
-
-
 
 function handleInput(choice) {
-    // console.log(choice);
     if (choice.value === 'name') {
-        // console.log('country name');
         // Add event listener to form
         countriesForm.addEventListener('submit', event => {
             event.preventDefault();
             const searchInput = document.querySelector('#searchInput').value;
-            findInfo(searchInput);
+            getAllCountriesList(searchInput);
         })
     } else if (choice.value === 'language') {
-        // console.log('language');
         // Add event listener to form
         countriesForm.addEventListener('submit', event => {
             event.preventDefault();
@@ -49,23 +42,25 @@ function handleInput(choice) {
         console.log('nothing');
     }
 }
-const countryNameElement = document.createElement('h1');
-document.body.append(countryNameElement);
 
-// Sends new request for new async promise
-function findInfo(countryName) {
-    // Get Flag
-    // getAllCountriesList(`name/${countryName}?field=flags.png`);
-    // Get Name
-    getAllCountriesList(`name/${countryName}?fields=name`);
+// Event Listener for the form submit button
+function displayCountries(countriesList){
+    console.log(countriesList);
 
-}
+    for(const country of countriesList){
+        console.log('help');
+        const countryNameEl = document.createElement('h1');
+        document.body.append(countryNameEl);
 
+        const countryImageEl = document.createElement('img');
+        document.body.append(countryImageEl);
 
+        const countryName = country.name.common;
+        countryNameEl.innerText = countryName;
 
-// Creates h1 and shows the country name
-function showName(countryName) {
-    countryNameElement.innerText = countryName;
+        const countryImage = country.flags.png;
+        countryImageEl.src = countryImage;
+    }
 }
 
 // Display Error Message for user
